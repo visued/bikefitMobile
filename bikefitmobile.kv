@@ -1,0 +1,404 @@
+#-*- coding: utf-8 -*-
+#:import C kivy.utils.get_color_from_hex
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+<BikeFitMobile>:
+    ScreenManager:
+        transition: FadeTransition()
+
+        id: kivy_screen_manager
+
+        StartScreen:
+            id: start_screen
+            name: 'start_screen'
+
+        CadastroAtletaScreen:
+            id: cadastroAtleta_screen
+            name: 'cadastroAtleta_screen'
+
+        CadastroAvaliacaoScreen:
+            id: cadastroAvaliacao_screen
+            name: 'cadastroAvaliacao_screen'
+
+        ConfiguracoesScreen:
+            id: configuracoes_screen
+            name: "configuracoes_screen"
+
+<StartScreen@Screen>:
+    canvas:
+        Color:
+            rgb: C('##33383b')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        Image:
+            source: 'images/logo.png'
+            size_hint: (0.5, 0.5)
+            pos_hint: {'x': 0.25, 'y': 0.5}
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [30, 430, 30, 100]
+        spacing: 30
+
+        Button:
+            background_color: C('#84c225')
+            background_normal: ''
+            text: 'Novo Atleta'
+            font_name: 'data/fonts/Segoe_UI.ttf'
+            on_press: root.manager.current = 'cadastroAtleta_screen'
+
+        Button:
+            text: 'Nova Avaliação'
+            font_name: 'data/fonts/Segoe_UI.ttf'
+            background_color: C('#84c225')
+            background_normal: ''
+
+        Button:
+            text: 'Configurações'
+            font_name: 'data/fonts/Segoe_UI.ttf'
+            background_color: C('#84c225')
+            background_normal: ''
+
+
+<CadastroAtletaScreen@Screen>:
+    canvas:
+        Color:
+            rgb: C('##33383b')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    ScrollView:
+        GridLayout:
+            padding: 50, 10, 50, 10
+            spacing: 30
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+
+            Label:
+                text: 'Nome'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+
+            TextInput:
+                id: nome
+                hint_text: 'Nome do atleta'
+                multiline: False
+                size_hint_y: None
+                height: '40sp'
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Email'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: email
+                hint_text: 'Email, Ex: email@suedcorps.com.'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Telefone'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: telefone
+                hint_text: 'Telefone, Ex: DDD 99999-9999.'
+                input_type: 'number'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Cidade'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: cidade
+                hint_text: 'Cidade, Ex: Sao Paulo - SP.'
+                font_name: 'data/fonts/Segoe_UI.ttf'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Endereço'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: endereco
+                hint_text: 'Endereco, Ex: Rua Sao Joao, 9999 - Centro.'
+                font_name: 'data/fonts/Segoe_UI.ttf'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Data de Nascimento'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: data_nascimento
+                hint_text: 'Nascimento, Ex: 26/09/1991.'
+                input_type: 'number'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'CPF/CNPJ'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: cpf_cnpj
+                hint_text: 'CPF/CNPJ, Ex: 999.999.999-46 / 99.999.999/0001-99.'
+                input_type: 'number'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'RG'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: rg
+                hint_text: 'RG, Ex: 99.999.999-x'
+                input_type: 'number'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Ano Início do Esporte'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: ano_ini_esporte
+                hint_text: 'Ano inicio do esporte, Ex: 2017.'
+                input_type: 'number'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Modalidade Principal'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            Spinner:
+                id: modalidade_principal
+                text: 'Modalidade principal'
+                font_name: 'data/fonts/Segoe_UI.ttf'
+                background_color: C('#84c225')
+                background_normal: ''
+                values: ('MTB', 'Ciclismo', 'Triathlon')
+                height: '40sp'
+                size_hint_y: None
+
+            Spinner:
+                id: vezes_treina
+                text: 'Qtd. Vezes Treina na Semana'
+                font_name: 'data/fonts/Segoe_UI.ttf'
+                background_color: C('#84c225')
+                background_normal: ''
+                values: ('1', '2', '3', '5', '5', '6', '7')
+                height: '40sp'
+                size_hint_y: None
+
+            Label:
+                text: 'Duração do Treino'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: duracao_treino
+                hint_text: 'Duracao do treino, Ex: 3 hrs.'
+                input_type: 'number'
+                font_name: 'data/fonts/Segoe_UI.ttf'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Horas de Treino Por Semana'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: horas_treina_semana
+                hint_text: 'Horas de treino por semana, Ex: 10 hrs.'
+                input_type: 'number'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Modalidade Frequente'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: modalidade_frequente
+                hint_text: 'Modalidade de treino frequente, Ex: Speed de Estrada.'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Duração Do Treino Mais Longo'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: duracao_treino_longo
+                hint_text: 'Duracao do treino mais longo, Ex: 5 hrs.'
+                input_type: 'number'
+                font_name: 'data/fonts/Segoe_UI.ttf'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Profissão'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: profissao
+                hint_text: 'Profissao, Ex: Encanador.'
+                font_name: 'data/fonts/Segoe_UI.ttf'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Competições Que Frequenta'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: competicoes_frequenta
+                hint_text: 'Competicoes que frequenta, Ex: Speed X MTB.'
+                font_name: 'data/fonts/Segoe_UI.ttf'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Duração Das Provas'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: duracao_provas
+                hint_text: 'Duracao das provas, Ex: 5 hrs.'
+                input_type: 'number'
+                font_name: 'data/fonts/Segoe_UI.ttf'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Spinner:
+                id: tipo_de_relevo
+                text: 'Tipo De Relevo'
+                font_name: 'data/fonts/Segoe_UI.ttf'
+                background_color: C('#84c225')
+                background_normal: ''
+                values: ('Plano', 'Pouco de subidas', 'Muitas subidas')
+                height: '40sp'
+                size_hint_y: None
+
+            Spinner:
+                id: nivel_atleta
+                text: 'Nível Do Atleta'
+                font_name: 'data/fonts/Segoe_UI.ttf'
+                background_color: C('#84c225')
+                background_normal: ''
+                values: ('Amador', 'Amador forte', 'Alto rendimento', 'Alto rendimento profissional', 'Recreacional')
+                height: '40sp'
+                size_hint_y: None
+
+            Label:
+                text: 'Outros comentários'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+            TextInput:
+                id: outros
+                hint_text: 'Comentarios adicionais.'
+                font_name: 'data/fonts/Segoe_UI.ttf'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Button:
+                text: 'Load'
+                size_hint_y: None
+                font_name: 'data/fonts/Segoe_UI.ttf'
+                background_color: C('#84c225')
+                background_normal: ''
+
+                on_release: app.root.show_load()
+
+            Button:
+                size_hint_y: None
+                height: '40sp'
+                text: 'Salvar'
+                font_name: 'data/fonts/Segoe_UI.ttf'
+                background_color: C('#84c225')
+                background_normal: ''
+                on_press: app.root.postData()
+
+<CadastroAvaliacaoScreen@Screen>:
+
+<ConfiguracoesScreen@Screen>:
+
+<LoadDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+            Button:
+                text: "Load"
+                on_release: root.load(filechooser.path, filechooser.selection)
